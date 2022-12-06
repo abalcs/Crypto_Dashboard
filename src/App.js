@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-import Nav from './components/Nav/Nav.js'
+import Nav from './components/Nav/Nav.js';
+import Hero from './components/Hero/Hero.js';
 
 const App = () => {
   return (
-    <Nav />
+    <Fragment>
+
+      <Nav />
+      <Hero />
+      
+    </Fragment>
   )
 }
 

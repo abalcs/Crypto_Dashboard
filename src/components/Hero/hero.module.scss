@@ -1,0 +1,28 @@
+.hero {
+    background-image: url('../../../src/images/space.jpg');
+    height: 52vh;
+    background-position: center;
+    background-size: cover;
+
+    &__headline {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 3%;
+    };
+
+    &__title {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    &__subtitle {
+        padding-top: 1%;
+        color: darkgray !important;
+    }
+
+    &__title, &__subtitle {
+        color: white;
+    }
+}
+

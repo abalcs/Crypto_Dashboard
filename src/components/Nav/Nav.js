@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-export default function Nav() {
+const Nav = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -22,9 +22,13 @@ export default function Nav() {
           </Typography>
           <Button 
           variant='contained' 
-          style={{ background: '#ffc400', color: '#000', marginRight: '5%' }}>Login</Button>
+          style={{ background: '#ffc400', color: '#000', marginRight: '5%' }}>
+          Login
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
   );
-}
+};
+
+export default Nav;
