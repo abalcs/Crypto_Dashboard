@@ -1,3 +1,17 @@
 .trending {
     text-align: center;
+
+    &__change {
+        display: flex;
+        justify-content: center;
+
+        &__symbolColor {
+            color: white;
+        }
+    }
+
+    &__price {
+        text-align: center;
+        color: white;
+    }
 }

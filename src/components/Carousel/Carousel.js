@@ -1,3 +1,4 @@
+import { Box, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 
@@ -23,10 +24,22 @@ const Carousel = () => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     }
 
-    return (
+    const responsive = {
+        0: {
+            items: 2
+        },
+        512: {
+            items: 4
+        },
+        2048: {
+            items: 8
+        }
+    };
+
+    const items = 
         trending.map((data, i) => {
             return (
-                <div 
+                <Box 
                 className={`${style.trending}`}>
                     <a 
                     href='http://www.bitcoin.org' target='_blank' rel='noreferrer'>
@@ -38,26 +51,44 @@ const Carousel = () => {
                     </a>
         
                     <div 
-                    style={{ display: 'flex', justifyContent: 'center', width: '90px', padding: '10px' }}>
-                        <h4>{data.symbol.toUpperCase()}</h4>
+                    className={`${style.trending__change}`}>
+                        <Typography 
+                        className={`${style.trending__change__symbolColor}`}>
+                        {data.symbol.toUpperCase()}
+                        </Typography>
+                        
                         {data.price_change_percentage_24h > 0 ? 
-                        <h4 
+                        <Typography 
                         style={{ color: 'green' }}>
                         {data.price_change_percentage_24h.toFixed(2)}%
-                        </h4> 
-                        : <h4 
+                        </Typography> 
+                        : <Typography 
                         style={{ color: 'red' }}>
                         {data.price_change_percentage_24h.toFixed(2)}%
-                        </h4>}
+                        </Typography>}
                     </div>
                     
                     <h3 
-                    style={{ textAlign: 'center' }}>
+                    className={`${style.trending__price}`}>
                     ${numberWithCommas(data.current_price.toFixed(2))}
                     </h3>
-                </div>
+                </Box>
             )
         })
+    ;
+
+    return (
+        <AliceCarousel
+        mouseTracking 
+        items={items} 
+        responsive={responsive}
+        infinite
+        autoPlayInterval={1000}
+        animationDuration={1500}
+        disableDotsControls
+        disableButtonsControls
+        autoPlay
+        />
     )
 }
 

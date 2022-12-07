@@ -26,7 +26,7 @@ const Hero = () => {
                 </Typography>
                 
                 <div 
-                className={`${style.carousel}`}>
+                className={`${style.hero__carousel}`}>
                     <Carousel />
                 </div>
             </div>
