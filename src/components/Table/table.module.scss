@@ -1,0 +1,93 @@
+.table {
+    font-size: 0.9em;
+    width: 80%;
+    margin: 50px auto;
+    border-collapse: collapse;
+    border-spacing: 0px;
+
+    &__headerRow {
+        font-size: 1.1rem;
+    }
+
+    &__headerRow th:first-child {
+        border-radius: 10px 0 0 0;
+    }
+
+    &__headerRow th:last-child {
+        border-radius: 0 10px 0 0;
+    }
+}
+
+.table th,
+.table td {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.table td {
+    color: white;
+}
+
+.table th {
+    color: black;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #f3f3f3;
+    background-color: #1c1c1c;
+}
+
+.table thead tr {
+    background-color: #ffc400;
+    padding: 0;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+
+    &__select {
+        background-color: #ffc400;
+        padding: 10px 5px 10px 10px;
+        margin: 10px;
+        border-radius: 5px;
+        width: 100px;
+        text-transform: uppercase;
+    }
+
+    &__option {
+        color: #ffc400 !important;
+        text-transform: uppercase;
+    }
+
+    &__btn {
+        margin: 10px;
+        color: white;
+        border: 1px solid white;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100px;
+        text-align: center;
+    }
+
+    &__btn:hover {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .table {
+      display: block;
+      overflow-x: scroll;
+      width: 90%;
+    }
+
+    .pagination {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
