@@ -10,7 +10,7 @@ const Nav = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar 
-      position="fixed" 
+      position="static" 
       style={{ background: '#141414' }}>
         <Toolbar>
           <Typography 
