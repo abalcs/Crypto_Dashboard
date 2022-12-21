@@ -1,5 +1,6 @@
 {
   "name": "crypto_dashboard",
+  "homepage": "https://abalcs.github.io/Crypto_Dashboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
