@@ -1,6 +1,8 @@
-import { Typography } from '@mui/material';
 import React, { useEffect, useState, useMemo } from 'react';
 import { useTable, useGlobalFilter, usePagination, useSortBy } from 'react-table';
+
+import { Typography } from '@mui/material';
+import { GlobalFilter } from '../../utils/GlobalFilter/GlobalFilter';
 
 import style from './table.module.scss';
 
@@ -24,9 +26,11 @@ const Table = () => {
             )
         },
         {
+            Header: 'Name',
             accessor: 'name',
         },
         {
+            Header: 'Symbol',
             accessor: 'symbol',
         },
         {
@@ -36,6 +40,14 @@ const Table = () => {
         {
             Header: '24h Change',
             accessor: 'price_change_percentage_24h',
+            sortType: 'basic',
+            Cell: (props) => {
+                return (
+                  <p style={{ color: props.value >= 0 ? "green" : "red" }}>
+                    {Number(props.value.toFixed(2))} %
+                  </p>
+                );
+              }
         },
         {
             Header: 'Market Cap',
@@ -44,6 +56,7 @@ const Table = () => {
     ]
 
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const columns = useMemo(() => cols, [])
     const data = useMemo(() => tableData, [tableData])
 
@@ -92,6 +105,10 @@ const Table = () => {
             Cryptocurrency Prices by Market Cap
             </Typography>
 
+            <GlobalFilter 
+            filter={globalFilter} 
+            setFilter={setGlobalFilter} />
+
             <table
             className={`${style.table}`}
             {...getTableProps()} >
@@ -121,11 +138,6 @@ const Table = () => {
                         return (
                             <td {...cell.getCellProps()}>
                             {[
-                                '24h Change'
-                            ].includes(cell.column.Header) &&
-                            (cell.value || cell.value === 0)
-                            ? (cell.value).toFixed(2) + ` %`
-                            : [
                                 'Price'
                             ].includes(cell.column.Header) &&
                             (cell.value || cell.value === 0)
@@ -135,6 +147,11 @@ const Table = () => {
                             ].includes(cell.column.Header) &&
                             (cell.value || cell.value === 0)
                             ? `$ ` + numberWithCommas(cell.value)
+                            : [
+                                'Symbol'
+                            ].includes(cell.column.Header) &&
+                            (cell.value || cell.value === 0)
+                            ? (cell.value).toUpperCase()
                             : cell.render("Cell")}</td>
                         );
                         })}
